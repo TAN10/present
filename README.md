@@ -1,11 +1,45 @@
-<div align="center">
+# Eternal Bloom for Drishti 🌸
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A personalized digital sanctuary and birthday gift for Drishti. This application celebrates our journey together through interactive memories, heartfelt words, and a collection of reasons why she is loved.
 
-  <h1>Built with AI Studio</h2>
+## ✨ Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **Anniversary Tracker**: A live counter of our time together.
+- **Memory Timeline**: A scrolling journey of our most cherished moments.
+- **The Love Jar**: An interactive jar filled with reasons why I love Drishti.
+- **AI Love Letter Assistant**: A Gemini-powered tool to help express deep feelings through poetic letters.
+- **Responsive Design**: A beautiful, mobile-friendly interface built with a "Warm Organic" aesthetic.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 🚀 Tech Stack
 
-</div>
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS 4
+- **Animations**: Motion (formerly Framer Motion)
+- **AI**: Google Gemini 3 Flash (via @google/genai)
+- **Icons**: Lucide React
+
+## 🛠️ Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/eternal-bloom-drishti.git
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Variables**:
+   Create a `.env` file and add your Gemini API Key:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+## 💖 Dedicated to Drishti
+Happy Birthday! This project was built with love to celebrate the most beautiful soul I know.
