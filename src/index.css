@@ -4,14 +4,14 @@
 @theme {
   --font-serif: "Libre Baskerville", serif;
   --font-sans: "Inter", sans-serif;
-  --color-romantic-bg: #fdfaf6;
-  --color-romantic-accent: #e89a9a;
-  --color-romantic-text: #4a3f3f;
+  --color-app-bg: #f8f9fa;
+  --color-app-accent: #d4af37; /* Gold accent */
+  --color-app-text: #2d3436;
 }
 
 @layer base {
   body {
-    @apply bg-romantic-bg text-romantic-text font-sans;
+    @apply bg-app-bg text-app-text font-sans;
   }
   h1, h2, h3, .serif {
     @apply font-serif;
@@ -19,7 +19,7 @@
 }
 
 .glass-card {
-  @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-sm;
+  @apply bg-white/80 backdrop-blur-md border border-black/5 shadow-sm;
 }
 
 .floating {

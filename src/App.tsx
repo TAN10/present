@@ -1,126 +1,112 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Heart, Music, Camera, MessageSquare, Gift } from 'lucide-react';
-import MemoryTimeline from './components/MemoryTimeline';
-import LoveJar from './components/LoveJar';
-import LetterGenerator from './components/LetterGenerator';
-import AnniversaryTracker from './components/AnniversaryTracker';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Gift, Camera, BookOpen, Star, Crown } from 'lucide-react';
+import MomentTimeline from './components/MomentTimeline';
+import ThoughtsJournal from './components/ThoughtsJournal';
+import SecretHeartSection from './components/SecretHeartSection';
+import BirthdayGallery from './components/BirthdayGallery';
+import BirthdayCake from './components/BirthdayCake';
+import BirthdayGate from './components/BirthdayGate';
 
 export default function App() {
+  const [isGalleryUnlocked, setIsGalleryUnlocked] = useState(false);
+  const [showGate, setShowGate] = useState(true);
+
   return (
-    <div className="min-h-screen selection:bg-romantic-accent/30">
-      {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden px-4">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://picsum.photos/seed/romantic-bg/1920/1080?blur=8" 
-            className="w-full h-full object-cover opacity-20"
-            alt="Background"
-            referrerPolicy="no-referrer"
-          />
-        </div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="z-10 text-center"
-        >
-          <div className="flex justify-center mb-6">
-            <motion.div 
-              animate={{ scale: [1, 1.1, 1], rotate: [0, 10, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-              className="text-romantic-accent"
+    <div className="min-h-screen font-sans selection:bg-app-accent/20">
+      <AnimatePresence>
+        {showGate && (
+          <BirthdayGate onOpen={() => setShowGate(false)} />
+        )}
+      </AnimatePresence>
+
+      {/* Main Content - Revealed after gate opens */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showGate ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative"
+      >
+        {/* Moments Section (Now the top section) */}
+        <section className="py-20 bg-white/50 min-h-screen flex flex-col justify-center">
+          <div className="max-w-6xl mx-auto px-4 w-full">
+            <div className="flex items-center gap-3 mb-4 justify-center">
+              <Crown className="text-app-accent w-8 h-8" />
+              <h2 className="text-lg md:text-xl font-serif text-center text-black/60 font-bold">Maharani Sahiba</h2>
+            </div>
+            
+            {/* Maharani Image */}
+            <div className="mb-12 flex justify-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, type: "spring" }}
+                className="relative p-2.5 bg-white shadow-2xl rounded-xl rotate-1 hover:rotate-0 transition-transform duration-500"
+              >
+                <img 
+                  src="https://i.ibb.co/nqQQCcMb/dbday.jpg" 
+                  alt="Maharani Sahiba" 
+                  className="rounded-lg max-w-full md:max-w-[320px] h-auto object-cover"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-white p-2.5 rounded-full shadow-lg rotate-12">
+                  <span className="text-2xl">👑</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Birthday Cake */}
+            <div className="mb-20">
+              <BirthdayCake />
+            </div>
+
+            <MomentTimeline />
+          </div>
+        </section>
+
+        {/* Thoughts Section */}
+        <section className="py-20">
+          <ThoughtsJournal />
+        </section>
+
+        {/* Secret Heart Section */}
+        <SecretHeartSection 
+          onUnlock={() => setIsGalleryUnlocked(true)} 
+          isUnlocked={isGalleryUnlocked}
+        />
+
+        {/* Unlocked Gallery Section */}
+        <AnimatePresence>
+          {isGalleryUnlocked && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <Gift className="w-16 h-16" />
+              <BirthdayGallery onBack={() => setIsGalleryUnlocked(false)} />
             </motion.div>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mb-4"
-          >
-            <span className="px-4 py-1 rounded-full bg-romantic-accent text-white text-xs font-bold tracking-[0.3em] uppercase">
-              Happy Birthday, My Love
-            </span>
-          </motion.div>
-          <h1 className="text-6xl md:text-9xl font-serif text-romantic-text mb-6 tracking-tight">
-            Drishti
-          </h1>
-          <p className="text-lg md:text-xl text-romantic-text/60 font-light max-w-lg mx-auto leading-relaxed italic">
-            "To the woman who brings light to my world every single day. Today is all about celebrating you."
-          </p>
-        </motion.div>
+          )}
+        </AnimatePresence>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-romantic-text/30 flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll to explore</span>
-          <div className="w-px h-12 bg-gradient-to-b from-romantic-text/30 to-transparent" />
-        </motion.div>
-      </section>
-
-      {/* Anniversary Tracker */}
-      <section className="py-24 px-4 bg-white/30">
-        <AnniversaryTracker />
-      </section>
-
-      {/* Memory Timeline */}
-      <section className="py-24 px-4">
-        <MemoryTimeline />
-      </section>
-
-      {/* Love Jar & Letter Generator Grid */}
-      <section className="py-24 px-4 bg-romantic-accent/5">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-12">
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl font-serif text-romantic-text mb-4">The Love Jar</h2>
-              <p className="text-romantic-text/60 max-w-md mx-auto lg:mx-0">
-                A collection of all the little things that make me fall for you every single day.
-              </p>
-            </div>
-            <LoveJar />
-          </div>
-
-          <div className="space-y-12">
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl font-serif text-romantic-text mb-4">Heartfelt Words</h2>
-              <p className="text-romantic-text/60 max-w-md mx-auto lg:mx-0">
-                Sometimes it's hard to say exactly how I feel. Let's find the words together.
-              </p>
-            </div>
-            <LetterGenerator />
-          </div>
-        </div>
-      </section>
-
-      {/* Footer / Closing */}
-      <footer className="py-32 px-4 text-center border-t border-romantic-accent/10">
-        <motion.div
-          whileInView={{ opacity: 1, scale: 1 }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          className="space-y-8"
-        >
-          <div className="flex justify-center gap-4 text-romantic-accent/40">
-            <Camera className="w-5 h-5" />
-            <Music className="w-5 h-5" />
-            <MessageSquare className="w-5 h-5" />
+        {/* Footer */}
+        <footer className="py-20 text-center border-t border-black/5 mt-12">
+          <div className="flex justify-center gap-6 mb-8 text-black/20">
+            <BookOpen className="w-5 h-5" />
+            <Star className="w-5 h-5" />
             <Gift className="w-5 h-5" />
           </div>
-          <h2 className="text-3xl font-serif text-romantic-text">To many more memories...</h2>
-          <p className="text-romantic-text/40 text-sm tracking-widest uppercase font-bold">
-            Always & Forever
+          <p className="text-sm font-serif italic text-black/40 mb-8">
+            Wishing you a day as wonderful as you are.
           </p>
-          <div className="pt-12">
-            <Heart className="w-6 h-6 mx-auto text-romantic-accent fill-romantic-accent opacity-20" />
-          </div>
-        </motion.div>
-      </footer>
+          <button
+            onClick={() => setShowGate(true)}
+            className="px-6 py-2 bg-black/5 hover:bg-black/10 text-black/60 rounded-full text-sm font-medium transition-colors"
+          >
+            Open Gate Again
+          </button>
+        </footer>
+      </motion.div>
     </div>
   );
 }
