@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Gift, Camera, BookOpen, Star, Crown } from 'lucide-react';
+import { Gift, BookOpen, Star, Crown } from 'lucide-react';
 import MomentTimeline from './components/MomentTimeline';
-import ThoughtsJournal from './components/ThoughtsJournal';
+import QuotesSection from './components/QuotesSection';
 import SecretHeartSection from './components/SecretHeartSection';
 import BirthdayGallery from './components/BirthdayGallery';
 import BirthdayCake from './components/BirthdayCake';
 import BirthdayGate from './components/BirthdayGate';
+import SecretMessage from './components/SecretMessage';
+import ThankYouPage from './components/ThankYouPage';
 
 export default function App() {
   const [isGalleryUnlocked, setIsGalleryUnlocked] = useState(false);
   const [showGate, setShowGate] = useState(true);
+  const [showSecretMessage, setShowSecretMessage] = useState(false);
+  const [showThankYouMessage, setShowThankYouMessage] = useState(false);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-app-accent/20">
+    <div className="min-h-screen font-sans selection:bg-app-accent/20 bg-[#F5E6D3]">
       <AnimatePresence>
         {showGate && (
           <BirthdayGate onOpen={() => setShowGate(false)} />
@@ -28,29 +32,29 @@ export default function App() {
         className="relative"
       >
         {/* Moments Section (Now the top section) */}
-        <section className="py-20 bg-white/50 min-h-screen flex flex-col justify-center">
+        <section className="py-20 min-h-screen flex flex-col justify-center">
           <div className="max-w-6xl mx-auto px-4 w-full">
-            <div className="flex items-center gap-3 mb-4 justify-center">
-              <Crown className="text-app-accent w-8 h-8" />
-              <h2 className="text-lg md:text-xl font-serif text-center text-black/60 font-bold">Maharani Sahiba</h2>
+            <div className="flex items-center gap-4 mb-8 justify-center">
+              <Crown className="text-app-accent w-12 h-12" />
+              <h2 className="text-4xl md:text-6xl font-serif text-center text-black/80 font-bold tracking-tight">Maharani Sahiba</h2>
             </div>
             
             {/* Maharani Image */}
-            <div className="mb-12 flex justify-center">
+            <div className="mb-16 flex justify-center">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, type: "spring" }}
-                className="relative p-2.5 bg-white shadow-2xl rounded-xl rotate-1 hover:rotate-0 transition-transform duration-500"
+                className="relative p-4 bg-white shadow-2xl rounded-2xl rotate-1 hover:rotate-0 transition-transform duration-500"
               >
                 <img 
                   src="https://i.ibb.co/nqQQCcMb/dbday.jpg" 
                   alt="Maharani Sahiba" 
-                  className="rounded-lg max-w-full md:max-w-[320px] h-auto object-cover"
+                  className="rounded-xl max-w-full md:max-w-[500px] h-auto object-cover"
                 />
-                <div className="absolute -bottom-4 -right-4 bg-white p-2.5 rounded-full shadow-lg rotate-12">
-                  <span className="text-2xl">👑</span>
+                <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-xl rotate-12">
+                  <span className="text-4xl">👑</span>
                 </div>
               </motion.div>
             </div>
@@ -64,10 +68,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Thoughts Section */}
-        <section className="py-20">
-          <ThoughtsJournal />
-        </section>
+        {/* Quotes Section */}
+        <QuotesSection />
 
         {/* Secret Heart Section */}
         <SecretHeartSection 
@@ -77,15 +79,35 @@ export default function App() {
 
         {/* Unlocked Gallery Section */}
         <AnimatePresence>
-          {isGalleryUnlocked && (
+          {isGalleryUnlocked && !showSecretMessage && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <BirthdayGallery onBack={() => setIsGalleryUnlocked(false)} />
+              <BirthdayGallery 
+                onBack={() => setIsGalleryUnlocked(false)} 
+                onOpenSecretMessage={() => setShowSecretMessage(true)}
+              />
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Secret Message Section */}
+        <AnimatePresence>
+          {showSecretMessage && !showThankYouMessage && (
+            <SecretMessage 
+              onBack={() => setShowSecretMessage(false)}
+              onOpenThankYou={() => setShowThankYouMessage(true)}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Thank You Page Section */}
+        <AnimatePresence>
+          {showThankYouMessage && (
+            <ThankYouPage onBackToMemoir={() => setShowThankYouMessage(false)} />
           )}
         </AnimatePresence>
 

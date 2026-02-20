@@ -12,11 +12,12 @@ export default function SecretHeartSection({ onUnlock, isUnlocked }: SecretHeart
   const [error, setError] = useState(false);
 
   const handleSubmit = () => {
-    if (input.toLowerCase().trim() === 'drishti') {
+    if (input.toLowerCase() === 'drishti') {
       onUnlock();
+      setError(false);
     } else {
       setError(true);
-      setTimeout(() => setError(false), 500);
+      setTimeout(() => setError(false), 2000);
     }
   };
 

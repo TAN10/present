@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { GALLERY_IMAGES } from '../constants';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowLeft, Heart } from 'lucide-react';
 
 interface BirthdayGalleryProps {
   onBack: () => void;
+  onOpenSecretMessage: () => void;
 }
 
-export default function BirthdayGallery({ onBack }: BirthdayGalleryProps) {
+export default function BirthdayGallery({ onBack, onOpenSecretMessage }: BirthdayGalleryProps) {
   const [unblurredImages, setUnblurredImages] = useState<Record<number, boolean>>({});
 
   const toggleBlur = (index: number) => {
     setUnblurredImages(prev => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: true
     }));
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 p-4 md:p-8 relative">
+    <div className="min-h-screen bg-pink-100 p-4 md:p-8 relative">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -26,12 +27,13 @@ export default function BirthdayGallery({ onBack }: BirthdayGalleryProps) {
         className="text-center py-12"
       >
         <div className="flex justify-center mb-4">
-          <Sparkles className="text-pink-400 w-8 h-8 animate-spin-slow" />
+          <Sparkles className="text-pink-500 w-12 h-12 animate-spin-slow" />
         </div>
-        <h1 className="text-5xl md:text-7xl font-serif text-pink-600 mb-4 tracking-tight">
-          Happy Birthday Drishti
+        <h1 className="text-5xl md:text-8xl font-serif text-pink-600 mb-4 tracking-tight flex flex-col gap-4">
+          <span>Happy Birthday,</span>
+          <span>Drishti🤌🏻❤️</span>
         </h1>
-        <p className="text-pink-400 font-serif italic text-lg">
+        <p className="text-pink-500 font-serif italic text-2xl">
           A collection of beautiful moments
         </p>
       </motion.div>
@@ -45,24 +47,37 @@ export default function BirthdayGallery({ onBack }: BirthdayGalleryProps) {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             onClick={() => toggleBlur(index)}
-            className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 bg-white cursor-pointer"
+            className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 bg-white cursor-pointer" 
           >
             <img
               src={src}
               alt={`Birthday memory ${index + 1}`}
-              className={`w-full h-auto transition-all duration-700 group-hover:scale-110 ${
-                unblurredImages[index] ? 'blur-0' : 'blur-sm md:group-hover:blur-none'
-              }`}
+              className="w-full h-auto transition-all duration-1000 group-hover:scale-110"
+              style={{ 
+                filter: unblurredImages[index] ? 'blur(0px)' : 'blur(15px)',
+              }}
               referrerPolicy="no-referrer"
             />
-            <div className={`absolute inset-0 bg-pink-500/10 transition-opacity duration-300 ${
-              unblurredImages[index] ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
-            }`} />
+            {!unblurredImages[index] && (
+              <div className="absolute inset-0 bg-pink-500/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                 <span className="text-pink-600/60 font-serif italic">Reveal</span>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
 
-      <div className="flex justify-center pb-16">
+      <div className="flex flex-col items-center gap-6 pb-16">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onOpenSecretMessage}
+          className="flex items-center gap-3 px-8 py-4 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600 transition-all font-serif italic text-lg group"
+        >
+          <Heart className="w-5 h-5 fill-current group-hover:animate-pulse" />
+          A secret message from me to you
+        </motion.button>
+
         <button 
           onClick={onBack}
           className="flex items-center gap-2 px-6 py-3 bg-white text-pink-500 rounded-full shadow-md hover:shadow-lg hover:bg-pink-50 transition-all font-serif italic text-sm border border-pink-100"

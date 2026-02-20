@@ -45,14 +45,10 @@ export default function MomentTimeline() {
             <img
               src="https://i.ibb.co/fzN3WxL9/Whats-App-Image-2026-02-19-at-20-51-07.jpg"
               alt="The Beginning 1"
-              className={`w-full h-auto transition-all duration-700 ${isBlurred('beginning-1') ? 'blur-xl scale-110' : 'blur-0 scale-100'}`}
+              className="w-full h-auto transition-all duration-1000"
+              style={{ filter: isBlurred('beginning-1') ? 'blur(20px)' : 'blur(0px)', transform: isBlurred('beginning-1') ? 'scale(1.1)' : 'scale(1)' }}
               referrerPolicy="no-referrer"
             />
-            {isBlurred('beginning-1') && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                <span className="text-white/80 text-sm font-medium px-3 py-1 bg-black/20 rounded-full backdrop-blur-sm">Tap to view</span>
-              </div>
-            )}
           </motion.div>
 
           <motion.div
@@ -66,14 +62,10 @@ export default function MomentTimeline() {
             <img
               src="https://i.ibb.co/zHxf7bcQ/Whats-App-Image-2026-02-19-at-20-51-06.jpg"
               alt="The Beginning 2"
-              className={`w-full h-auto transition-all duration-700 ${isBlurred('beginning-2') ? 'blur-xl scale-110' : 'blur-0 scale-100'}`}
+              className="w-full h-auto transition-all duration-1000"
+              style={{ filter: isBlurred('beginning-2') ? 'blur(20px)' : 'blur(0px)', transform: isBlurred('beginning-2') ? 'scale(1.1)' : 'scale(1)' }}
               referrerPolicy="no-referrer"
             />
-            {isBlurred('beginning-2') && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                <span className="text-white/80 text-sm font-medium px-3 py-1 bg-black/20 rounded-full backdrop-blur-sm">Tap to view</span>
-              </div>
-            )}
           </motion.div>
         </div>
 
@@ -111,14 +103,10 @@ export default function MomentTimeline() {
               <img
                 src={src}
                 alt={`Special moment ${index + 1}`}
-                className={`w-full h-auto transition-all duration-700 ${isBlurred(`special-${index}`) ? 'blur-xl scale-110' : 'blur-0 scale-100'}`}
+                className="w-full h-auto transition-all duration-1000"
+                style={{ filter: isBlurred(`special-${index}`) ? 'blur(20px)' : 'blur(0px)', transform: isBlurred(`special-${index}`) ? 'scale(1.1)' : 'scale(1)' }}
                 referrerPolicy="no-referrer"
               />
-              {isBlurred(`special-${index}`) && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                  <span className="text-white/80 text-sm font-medium px-3 py-1 bg-black/20 rounded-full backdrop-blur-sm">Tap to view</span>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>

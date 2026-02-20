@@ -55,7 +55,7 @@ export default function BirthdayGate({ onOpen }: BirthdayGateProps) {
       </div>
       <h1 className="text-5xl md:text-7xl font-serif mb-6 tracking-tight flex flex-col gap-4 text-center text-app-text">
         <span>Happy Birthday,</span>
-        <span>Drishti</span>
+        <span>Drishti🤌🏻❤️</span>
       </h1>
       <p className="text-lg text-black/50 font-light max-w-md mx-auto leading-relaxed text-center px-4">
         May this year brings you happiness, fortune and good health.

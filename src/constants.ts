@@ -24,11 +24,12 @@ export const INITIAL_MOMENTS: Moment[] = [
 ];
 
 export const THOUGHTS: string[] = [
-  "I wanted to create this space to share some of my thoughts with you...",
-  "I'm so grateful for the time we spend together.",
-  "Your perspective on things always inspires me.",
-  "Thank you for being such a wonderful presence in my life.",
-  "Wishing you the happiest of birthdays, Drishti!"
+  "जन्मदिन की हार्दिक शुभकामनाएं मेरी प्यारी दुलारी दृष्टि, दिया ,कुटु , स्वीटू , प्यारु , महादेव की अनुपम हमेशा आप पर बनी रहे , जहां जाओ झंंडेगड़ो , स्वस्थ रहो , मस्त रहो,जो चाहो वो मिले , और हम हमेशा साथ रहे ✨🙏🧿🔱",
+  "Like Sun is nothing without sunshine, Moon is nothing without moonlight, i am nothing without you , you are the light i need so that we can shine brightly in the sky",
+  "आप मेरे जिंदगी के गाने की धुन हो जिसके बिना गाना अधूरा लगता था जो आपके आने से पूरा हो गया✨🎶",
+  "तन्मय और दृष्टि मिलकर रोशनी भी ले आएंगे हमारे जीवन में 🫣🤭",
+  "अगर आप दिया हो तो में आपकी बत्ती दोनों एक दूसरे के बिना नहीं रह सकते और जब साथ आते हैं तो प्रकाश ले आते है✨",
+  "Today's your 22nd birthday on 22nd feb, Lucky Golden Birthday that happens once in a lifetime , May this birthday act as the starting point of all positive and fortunate changes in your life and Brings you all the good luck and good health.✨🧿"
 ];
 
 // Add your image URLs here for the gallery
