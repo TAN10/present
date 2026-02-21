@@ -72,8 +72,8 @@ export default function BirthdayGate({ onOpen }: BirthdayGateProps) {
       <motion.div
         initial={{ x: 0 }}
         animate={{ x: isOpen ? '-100%' : 0 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#faf9f6] z-20 overflow-hidden"
+        transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#F5E6D3] z-20 overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-[200%] h-full">
           <GateContent />
@@ -84,8 +84,8 @@ export default function BirthdayGate({ onOpen }: BirthdayGateProps) {
       <motion.div
         initial={{ x: 0 }}
         animate={{ x: isOpen ? '100%' : 0 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute right-0 top-0 bottom-0 w-1/2 bg-[#faf9f6] z-20 overflow-hidden"
+        transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute right-0 top-0 bottom-0 w-1/2 bg-[#F5E6D3] z-20 overflow-hidden"
       >
         <div className="absolute top-0 left-[-100%] w-[200%] h-full">
           <GateContent />

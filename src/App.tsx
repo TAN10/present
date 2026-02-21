@@ -17,7 +17,7 @@ export default function App() {
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-app-accent/20 bg-[#F5E6D3]">
+    <div className="min-h-screen font-sans selection:bg-app-accent/20 bg-[#D2B48C]">
       <AnimatePresence>
         {showGate && (
           <BirthdayGate onOpen={() => setShowGate(false)} />

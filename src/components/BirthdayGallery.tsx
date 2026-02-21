@@ -19,7 +19,7 @@ export default function BirthdayGallery({ onBack, onOpenSecretMessage }: Birthda
   };
 
   return (
-    <div className="min-h-screen bg-pink-100 p-4 md:p-8 relative">
+    <div className="min-h-screen bg-pink-300 p-4 md:p-8 relative">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
