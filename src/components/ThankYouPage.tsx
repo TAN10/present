@@ -38,7 +38,7 @@ export default function ThankYouPage({ onBackToMemoir }: ThankYouPageProps) {
         </h1>
 
         <article className="prose prose-pink prose-lg max-w-none text-gray-700 leading-relaxed space-y-6 whitespace-pre-wrap italic mb-12">
-          {"Thank you for being with me in tough situations till now and i want you to be with me forever and ever , Thank you for being the someone special i have always dreamt of and again A very very Happy Birthday to you my love ❤️ Dirshti urf Diya❤️meri zindagi ki jyoti, meri life ka delulu 😭 my special my precious my only one that i care the most the cutu of my life❤️🧿✨kisi ki nazar na lge aapko jo bhi glti hui h maaf kr dena mujhe ,Love you baby, Aise hi life m progress aur ho skte to mere sath rehte hue ho❤️🤭\nJanamdin Mubarak Drishti ji✨❤️🧿🔱"}
+          {"Thank you for being with me in tough situations till now and i want you to be with me forever and ever , Thank you for being the someone special i have always dreamt of and again A very very Happy Birthday to you my love ❤️ Dirshti urf Diya❤️meri zindagi ki jyoti, meri life ka delulu 😭 my special my precious my only one that i care the most the cutu of my life❤️🧿✨kisi ki nazar na lge aapko aur jo bhi merese kbhi bhi glti hui h maaf kr dena mujhe ,Love you baby, Aise hi life m progress krti raho aur ho skte to mere sath rehte hue ho❤️🤭\nJanamdin Mubarak Drishti ji✨❤️🧿🔱"}
         </article>
 
         <motion.button
