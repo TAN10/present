@@ -7,7 +7,7 @@ import SecretHeartSection from './components/SecretHeartSection';
 import BirthdayGallery from './components/BirthdayGallery';
 import BirthdayCake from './components/BirthdayCake';
 import BirthdayGate from './components/BirthdayGate';
-import SecretMessage from './components/SecretMessage';
+import MemoirSite from './components/MemoirSite';
 import ThankYouPage from './components/ThankYouPage';
 
 export default function App() {
@@ -94,10 +94,10 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* Secret Message Section */}
+        {/* Memoir Site Section */}
         <AnimatePresence>
           {showSecretMessage && !showThankYouMessage && (
-            <SecretMessage 
+            <MemoirSite 
               onBack={() => setShowSecretMessage(false)}
               onOpenThankYou={() => setShowThankYouMessage(true)}
             />
